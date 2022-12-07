@@ -149,6 +149,10 @@ object InputManagerUtil {
                     })
                     -1
                 }
+                17 -> {
+                    sendAndroidTouch(30,95)
+                    -1
+                }
                 19 -> {
                     sendAndroidTouch(900, 135)
                     -1
