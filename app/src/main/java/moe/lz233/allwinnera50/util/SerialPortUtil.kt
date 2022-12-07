@@ -32,9 +32,6 @@ object SerialPortUtil {
         serialPortManager.setOnSerialPortDataListener(object : OnSerialPortDataListener {
             override fun onDataReceived(bytes: ByteArray) {
                 LogUtil._d("onDataReceived ${bytes[1].toInt()}")
-                val obtain = Message.obtain()
-                obtain.what = 262
-                obtain.obj = KeyBoardEvent(bytes[1], keyArray.get(bytes[1].toInt()))
                 keyBoardListenerList.forEach {
                     it(KeyBoardEvent(bytes[1], keyArray.get(bytes[1].toInt())))
                 }

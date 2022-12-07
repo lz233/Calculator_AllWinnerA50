@@ -15,11 +15,6 @@
         <service
             android:name=".service.KeyBoardService"
             android:enabled="true"
-            android:exported="false" />
-
-        <service
-            android:name=".service.TileService"
-            android:enabled="true"
             android:exported="true"
             android:icon="@drawable/ic_keyboard"
             android:label="Keyboard"
@@ -54,8 +49,14 @@
             android:name=".ui.process.ProcessServiceActivity"
             android:enabled="true"
             android:exported="true"
+            android:label="KeyboardService"
             android:launchMode="singleInstance"
-            android:theme="@style/Theme.AllWinnerA50.NoDisplay" />
+            android:theme="@style/Theme.AllWinnerA50.NoDisplay">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
 
     </application>
 

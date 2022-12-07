@@ -32,7 +32,7 @@ class MainActivity : BaseActivity() {
         SerialPortUtil.keyBoardListenerList.add {
             binding.textview.text = "${it.keycode} ${it.keyValue}"
         }
-        //startForegroundService(Intent(this,KeyBoardService::class.java))
+        startForegroundService(Intent(this,KeyBoardService::class.java))
     }
 
     override fun onDestroy() {
