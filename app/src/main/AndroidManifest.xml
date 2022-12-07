@@ -10,6 +10,7 @@
         android:name=".App"
         android:allowBackup="true"
         android:label="@string/app_name"
+        android:sharedUserId="android.uid.system"
         android:supportsRtl="true"
         android:theme="@style/Theme.AllWinnerA50">
         <service
@@ -57,6 +58,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name=".ui.switch.SwitchActivity"
+            android:enabled="true"
+            android:exported="false"
+            android:launchMode="singleInstance"
+            android:theme="@android:style/Theme.Material.Light.Dialog" />
 
     </application>
 

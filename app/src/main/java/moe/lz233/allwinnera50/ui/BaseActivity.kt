@@ -1,15 +1,13 @@
 package moe.lz233.allwinnera50.ui
 
+import android.app.Activity
 import android.content.Context
 import android.content.res.Configuration
 import android.os.Bundle
 import android.view.View
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.WindowCompat
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.MainScope
 
-abstract class BaseActivity : AppCompatActivity(), CoroutineScope by MainScope() {
+abstract class BaseActivity : Activity() {
     lateinit var rootView: View
 
     override fun onCreate(savedInstanceState: Bundle?) {

@@ -30,8 +30,14 @@ class KeyBoardService : android.service.quicksettings.TileService() {
         //execShell()
     }
 
+    override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
+        InputManagerUtil.mode = ConfigDao.keyboardMode
+        return super.onStartCommand(intent, flags, startId)
+    }
+
     override fun onDestroy() {
         super.onDestroy()
+        LogUtil._d("onDestroy")
         SerialPortUtil.keyBoardListenerList.clear()
         App.context.startActivity(Intent(App.context, ProcessServiceActivity::class.java).apply {
             addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
@@ -92,5 +98,6 @@ class KeyBoardService : android.service.quicksettings.TileService() {
         Shell.cmd("stop adbd").exec()
         Shell.cmd("start adbd").exec()
         Shell.cmd("wm overscan 0,0,0,-58").exec()
+        //LogUtil.toast(Shell.cmd("su dumpsys activity top | grep ACTIVITY").exec().out[0])
     }
 }

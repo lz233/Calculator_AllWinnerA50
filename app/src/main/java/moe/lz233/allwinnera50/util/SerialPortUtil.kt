@@ -31,7 +31,7 @@ object SerialPortUtil {
         })
         serialPortManager.setOnSerialPortDataListener(object : OnSerialPortDataListener {
             override fun onDataReceived(bytes: ByteArray) {
-                LogUtil._d("onDataReceived ${bytes[1].toInt()}")
+                LogUtil._d("onDataReceived ${bytes[1].toInt()} keyBoardListenerList ${keyBoardListenerList.size}")
                 keyBoardListenerList.forEach {
                     it(KeyBoardEvent(bytes[1], keyArray.get(bytes[1].toInt())))
                 }

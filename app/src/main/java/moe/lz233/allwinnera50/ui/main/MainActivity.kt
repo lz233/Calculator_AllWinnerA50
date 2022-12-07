@@ -10,7 +10,6 @@ import com.kongqw.serialportlibrary.SerialPortManager
 import com.topjohnwu.superuser.Shell
 import moe.lz233.allwinnera50.App
 import moe.lz233.allwinnera50.util.LogUtil
-import kotlinx.coroutines.launch
 import moe.lz233.allwinnera50.databinding.ActivityMainBinding
 import moe.lz233.allwinnera50.service.KeyBoardService
 import moe.lz233.allwinnera50.ui.BaseActivity
@@ -22,6 +21,7 @@ import java.util.*
 class MainActivity : BaseActivity() {
 
     private val binding by lazy { ActivityMainBinding.inflate(layoutInflater) }
+    var keyBoardListenerListSize = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,15 +29,16 @@ class MainActivity : BaseActivity() {
         StrictMode.setThreadPolicy(StrictMode.ThreadPolicy.Builder().permitAll().build())
         setContentView(binding.root)
 
+        keyBoardListenerListSize = SerialPortUtil.keyBoardListenerList.size
         SerialPortUtil.keyBoardListenerList.add {
             binding.textview.text = "${it.keycode} ${it.keyValue}"
         }
-        startForegroundService(Intent(this,KeyBoardService::class.java))
+        startForegroundService(Intent(this, KeyBoardService::class.java))
     }
 
     override fun onDestroy() {
         super.onDestroy()
-        SerialPortUtil.keyBoardListenerList.removeLast()
+        SerialPortUtil.keyBoardListenerList.removeAt(keyBoardListenerListSize)
     }
 
     override fun onKeyDown(keyCode: Int, event: KeyEvent): Boolean {
