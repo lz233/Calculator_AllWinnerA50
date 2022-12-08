@@ -42,7 +42,7 @@ Now pull down the settings panel and add the 'Keyboard' tile, then 'KeyboardServ
 
 - Some applications you may install
 
-  launcher3: [apk/launcher3.apk](blob/main/apk/launcher3.apk)
+  launcher3: [apk/launcher3.apk](apk/launcher3.apk)
 
 - Unnecessary applications that can be disabled
 
