@@ -100,5 +100,3 @@ Now pull down the settings panel and add the 'Keyboard' tile, then 'KeyboardServ
   $ su
   $ mount -o remount -o rw /
   ```
-
-  
