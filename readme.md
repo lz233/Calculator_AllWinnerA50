@@ -34,20 +34,24 @@ Now pull down the settings panel and add the 'Keyboard' tile, then 'KeyboardServ
 
 ## Misc
 
-- Hide navigation bar
+- Hide the navigation bar
 
   ```shell
-  wm overscan 0,0,0,-58
+  $ adb shell wm overscan 0,0,0,-58
   ```
 
-- Some applications you may install
+- Some applications you may want to install
 
   launcher3: [apk/launcher3.apk](apk/launcher3.apk)
+
+  gboard: https://www.apkmirror.com/apk/google-inc/gboard
+
+  wallpaper-9: https://www.apkmirror.com/apk/google-inc/google-wallpaper-picker/google-wallpaper-picker-9-5526574-release
 
 - Unnecessary applications that can be disabled
 
   ```shell
-  $ pm disable-user [packagename]
+  $ adb shell pm disable-user [packagename]
   com.allwinnertech.gmsintegration
   com.android.bips
   com.android.bookmarkprovider
@@ -80,6 +84,21 @@ Now pull down the settings panel and add the 'Keyboard' tile, then 'KeyboardServ
   com.softwinner.update
   com.sohu.inputmethod.sogou # use gboard
   org.chromium.webview_shell
+  ```
+
+- Unlock the OEM locking
+
+  ```shell
+  $ adb reboot bootloader
+  $ fastboot oem unlock
+  ```
+
+- Mount the root partition as read-write
+
+  ```shell
+  $ adb shell
+  $ su
+  $ mount -o remount -o rw /
   ```
 
   
