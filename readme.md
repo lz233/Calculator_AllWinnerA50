@@ -151,6 +151,6 @@ Now pull down the settings panel and add the 'Keyboard' tile, then 'KeyboardServ
 
 - Allwinner FEL mode
 
-  Power off the device, press on the 'UPDATE' button and then connect to PC and click the 'POWER' button 5-10 times, your device will go to FEL mode. Use [Sunxi-tools](https://github.com/linux-sunxi/sunxi-tools) to perform further steps.
+  Power off the device, press on the 'UPDATE' button, then connect to PC and click the 'POWER' button 5-10 times, your device will go to FEL mode. Use [Sunxi-tools](https://github.com/linux-sunxi/sunxi-tools) to perform further steps.
 
   ![](art/board.webp)
