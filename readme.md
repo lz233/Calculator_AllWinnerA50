@@ -36,17 +36,21 @@ Now pull down the settings panel and add the 'Keyboard' tile, then 'KeyboardServ
 
 - Hide the navigation bar
 
-  ```shell
+  ```sh
   $ adb shell wm overscan 0,0,0,-58
   ```
 
 - Some applications you may want to install
 
-  launcher3: [apk/launcher3.apk](apk/launcher3.apk)
+  Launcher3: [apk/launcher3.apk](apk/launcher3.apk)
 
-  gboard: https://www.apkmirror.com/apk/google-inc/gboard
+  Gboard: https://www.apkmirror.com/apk/google-inc/gboard
 
-  wallpaper-9: https://www.apkmirror.com/apk/google-inc/google-wallpaper-picker/google-wallpaper-picker-9-5526574-release
+  Wallpaper-9: https://www.apkmirror.com/apk/google-inc/google-wallpaper-picker/google-wallpaper-picker-9-5526574-release
+
+  Coolapk-v7: https://t.me/fuck_coolapk/119
+
+  Netease Music: https://t.me/fuck_coolapk_chat/43149
 
 - Unnecessary applications that can be disabled
 
@@ -100,3 +104,12 @@ Now pull down the settings panel and add the 'Keyboard' tile, then 'KeyboardServ
   $ su
   $ mount -o remount -o rw /
   ```
+
+- Fastboot images
+
+  [Download from here](https://drive.lz233.ac.cn/%E5%B7%A5%E7%A8%8B/%E5%88%B7%E6%9C%BA%E7%9B%B8%E5%85%B3/allwinnera50/fastboot), or see 'Dump raw images'.
+
+  ```shell
+  ```
+
+  
