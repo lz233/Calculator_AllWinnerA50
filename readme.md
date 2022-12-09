@@ -55,7 +55,7 @@ Now pull down the settings panel and add the 'Keyboard' tile, then 'KeyboardServ
 - Unnecessary applications that can be disabled
 
   ```shell
-  $ adb shell pm disable-user [packagename]
+  > adb shell pm disable-user [packagename]
   com.allwinnertech.gmsintegration
   com.android.bips
   com.android.bookmarkprovider
@@ -93,23 +93,64 @@ Now pull down the settings panel and add the 'Keyboard' tile, then 'KeyboardServ
 - Unlock the OEM locking
 
   ```shell
-  $ adb reboot bootloader
-  $ fastboot oem unlock
+  > adb reboot bootloader
+  > fastboot oem unlock
   ```
 
 - Mount the root partition as read-write
 
   ```shell
-  $ adb shell
-  $ su
-  $ mount -o remount -o rw /
+  > adb shell
+  > su
+  > mount -o remount -o rw /
   ```
 
-- Fastboot images
+- Dump raw images
+
+  **It is highly recommended to do this to backup your device.** Since Adbd may return unauthenticated on Linux on my side, use macOS instead.
+
+  ```shell
+  > adb reboot recovery
+  > adb root
+    timeout expired while waiting for device
+  > adb ls /dev/block/by-name
+    000041ed 00000140 63902b01 .
+    000041ed 000003c0 63902a1a ..
+    0000a1ff 00000015 63902a1a media_data
+    0000a1ff 00000015 63902a1a dtbo
+    0000alff 00000015 63902a1a empty
+    0000a1ff 00000015 63902a1a frp
+    0000a1ff 00000015 63902ala private
+    0000a1ff 00000015 63902a1a metadata
+    0000a1ff 00000014 63902a1a cache
+    0000a1ff 00000014 63902a1a recovery
+    0000a1ff 00000014 63902a1a misc
+    0000a1ff 00000014 63902a1a vendor
+    0000a1ff 00000014 63902a1a boot
+    0000a1ff 00000014 63902a1a env
+    0000a1ff 00000014 63902a1a bootloader
+    0000a1ff 00000014 63902a1a UDISK
+  > adb pull /dev/block/by-name/[partition] [filename]
+  > img2simg [filename] [filename] # convert raw img to android sparse img that can be flash in fastboot mode
+  ```
+
+- TWRP/Fastboot images
 
   [Download from here](https://drive.lz233.ac.cn/%E5%B7%A5%E7%A8%8B/%E5%88%B7%E6%9C%BA%E7%9B%B8%E5%85%B3/allwinnera50/fastboot), or see 'Dump raw images'.
 
-  ```shell
-  ```
+  Touch screen doesn't work in TWRP now, use OTG devices. Fastboot driver may be missing on Windows and macOS, finally I tested Fedora 37 and it works.
 
+  ```shell
+  > adb reboot bootloader
+  > fastboot flash recovery twrp.img
+  > fastboot reboot
+  > adb reboot recovery
+  ```
   
+  ![](art/twrp.webp)
+
+- Allwinner FEL mode
+
+  Power off the device, press on the 'UPDATE' button and then connect to PC and click the 'POWER' button 5-10 times, your device will go to FEL mode. Use [Sunxi-tools](https://github.com/linux-sunxi/sunxi-tools) to perform further steps.
+
+  ![](art/board.webp)
