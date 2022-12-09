@@ -36,8 +36,8 @@ Now pull down the settings panel and add the 'Keyboard' tile, then 'KeyboardServ
 
 - Hide the navigation bar
 
-  ```sh
-  $ adb shell wm overscan 0,0,0,-58
+  ```shell
+  > adb shell wm overscan 0,0,0,-58
   ```
 
 - Some applications you may want to install
